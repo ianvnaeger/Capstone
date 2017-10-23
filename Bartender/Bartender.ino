@@ -1,18 +1,19 @@
 // select the input pin for the potentiometer
 // select the pin for the LED
 // variable to store the value coming from the sensor
+#include <Arduino.h>
 int btn1 = 0, btn2 = 0, btn3 = 0, btn4 = 0;
 char bluetooth = 'E';
-int btn1Pin = 11; 
-int btn2Pin = 12; 
-int btn3Pin = 13; 
-int btn4Pin = 14; 
-int bluetoothPin = 15;
-int Drink1Pin = 16;
-int Drink2Pin = 17;
-int Mixer1Pin = 18;
-int Mixer2Pin = 19;
-int Mixer3Pin = 20;
+int btn1Pin = 2; 
+int btn2Pin = 3; 
+int btn3Pin = 4; 
+int btn4Pin = 5; 
+int bluetoothPin = 6;
+int Drink1Pin = 7;
+int Drink2Pin = 8;
+int Mixer1Pin = 9;
+int Mixer2Pin = 10;
+int Mixer3Pin = 11;;
 
 class DrinkProfile{
   public:
@@ -26,29 +27,30 @@ class DrinkProfile{
 
 void DrinkProfile::MakeDrink() {
   if( Drink1 == 1) {
-    DigitalWrite( Drink1Pin, HIGH);
-    delay(100);
-    DigitalWrite(Drink1Pin, LOW);
+    digitalWrite( Drink1Pin, HIGH);
+    Serial.println("Drink1");
+    delay(500);
+    digitalWrite(Drink1Pin, LOW);
   }
   if( Drink2 == 1) {
-    DigitalWrite( Drink2Pin, HIGH);
-    delay(100);
-    DigitalWrite(Drink2Pin, LOW);
+    digitalWrite( Drink2Pin, HIGH);
+    delay(500);
+    digitalWrite(Drink2Pin, LOW);
   }
   if( Mixer1 == 1 ) {
-    DigitalWrite( Mixer1Pin, HIGH);
-    delay(300);
-    DigitalWrite( Mixer1Pin, LOW);
+    digitalWrite( Mixer1Pin, HIGH);
+    delay(1500);
+    digitalWrite( Mixer1Pin, LOW);
   }
   if( Mixer2 == 1 ) {
-    DigitalWrite( Mixer2Pin, HIGH);
-    delay(300);
-    DigitalWrite( Mixer2Pin, LOW);
+    digitalWrite( Mixer2Pin, HIGH);
+    delay(1500);
+    digitalWrite( Mixer2Pin, LOW);
   }
   if( Mixer3 == 1 ) {
-    DigitalWrite( Mixer2Pin, HIGH);
-    delay(300);
-    DigitalWrite( Mixer2Pin, LOW);
+    digitalWrite( Mixer3Pin, HIGH);
+    delay(1500);
+    digitalWrite( Mixer3Pin, LOW);
   }
 }
 
