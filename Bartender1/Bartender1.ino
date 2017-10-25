@@ -6,16 +6,17 @@
 #include <Arduino.h>
 int btn1 = 0, btn2 = 0, btn3 = 0, btn4 = 0;
 char bluetooth = 'E';
-int btn1Pin = 2; 
-int btn2Pin = 3; 
-int btn3Pin = 4; 
-int btn4Pin = 5; 
+int btn1Pin = 8; 
+int btn2Pin = 9; 
+int btn3Pin = 10; 
+int btn4Pin = 11; 
 //int bluetoothPin = 6;
-int Drink1Pin = 7;
-int Drink2Pin = 8;
-int Mixer1Pin = 9;
-int Mixer2Pin = 10;
-int Mixer3Pin = 11;
+int Drink1Pin = 2;
+int Drink2Pin = 3;
+int Mixer1Pin = 4;
+int Mixer2Pin = 5;
+int Mixer3Pin = 6;
+SoftwareSerial bluetoothSerial( 0, 1 );
 
 class DrinkProfile{
   public:
@@ -92,22 +93,27 @@ void loop() {
   btn2 = digitalRead( btn2Pin );
   btn3 = digitalRead( btn3Pin );
   btn4 = digitalRead( btn4Pin );
+  Serial.println(Serial.read());
   bluetooth = Serial.read();
+  bluetooth = bluetoothSerial.read();
   if( btn1 == 1 ){
     //selection = A;
-    
+    Serial.println("Button: Drink 1 Selected");
     A.MakeDrink();
   }
   else if( btn2 == 1 ){
     //selection = B;
+    Serial.println("Button: Drink 2 Selected");
     B.MakeDrink();
   }
   else if( btn3 == 1 ){
     //selection = C;
+    Serial.println("Button: Drink 3 Selected");
     C.MakeDrink();
   }
   else if( btn4 == 1 ){
     //selection = D;
+    Serial.println("Button: Drink 4 Selected");
     D.MakeDrink();
   }
   else if( bluetooth == 'A'){
